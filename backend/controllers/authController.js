@@ -10,7 +10,7 @@ authController.post('/register', async (req, res) => {
     if (isExisting) {
       throw new Error("Email is already taken by another user")
     }
-
+  
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
     const newUser = await User.create({ ...req.body, password: hashedPassword })
